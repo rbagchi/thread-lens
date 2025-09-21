@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Thread Lens Wasm Demo</title>
+    <style>
+      body { font-family: sans-serif; margin: 20px; }
+      h1 { color: #333; }
+      .section { margin-bottom: 30px; padding: 15px; border: 1px solid #eee; border-radius: 8px; background-color: #f9f9f9; }
+      .section h2 { margin-top: 0; color: #555; }
+      input[type="file"] { margin-bottom: 10px; }
+      button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+      button:hover { background-color: #0056b3; }
+      pre { background-color: #eee; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  </head>
+  <body>
+    <h1>Thread Lens Wasm Demo</h1>
+
+    <div class="section">
+      <h2>1. Analyze a Single Thread Dump</h2>
+      <input type="file" id="singleDumpInput" accept=".jstack">
+      <button id="analyzeSingleDump">Analyze Single Dump</button>
+    </div>
+
+    <div class="section">
+      <h2>2. Analyze a Set of Thread Dumps</h2>
+      <p>Select multiple .jstack files from a directory.</p>
+      <input type="file" id="multipleDumpsInput" accept=".jstack, .zip" multiple>
+      <button id="analyzeMultipleDumps">Analyze Multiple Dumps</button>
+    </div>
+
+    <div class="section">
+      <h2>Output</h2>
+      <pre id="output"></pre>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

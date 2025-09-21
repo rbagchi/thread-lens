@@ -1,0 +1,90 @@
+2025-09-21T03:42:28.464775533
+Virtual machine: 7 JVM information:
+JRE 17 Linux aarch64-64-Bit Compressed References 20250715_1043 (JIT enabled, AOT enabled)
+OpenJ9   - 017819f167
+OMR      - 266a8c6f5
+JCL      - 34b4be01e57 based on jdk-17.0.16+8
+
+"JIT Compilation Thread-000" prio=10 Id=3 RUNNABLE
+
+"JIT Compilation Thread-001 Suspended" prio=10 Id=4 RUNNABLE
+
+"JIT Compilation Thread-002 Suspended" prio=10 Id=5 RUNNABLE
+
+"JIT Compilation Thread-003 Suspended" prio=10 Id=6 RUNNABLE
+
+"JIT Compilation Thread-004 Suspended" prio=10 Id=7 RUNNABLE
+
+"JIT Compilation Thread-005 Suspended" prio=10 Id=8 RUNNABLE
+
+"JIT Compilation Thread-006 Suspended" prio=10 Id=9 RUNNABLE
+
+"JIT Diagnostic Compilation Thread-007 Suspended" prio=10 Id=10 RUNNABLE
+
+"JIT-SamplerThread" prio=10 Id=11 TIMED_WAITING
+
+"IProfiler" prio=5 Id=12 RUNNABLE
+
+"Common-Cleaner" prio=8 Id=2 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Object.waitImpl(Native Method)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:251)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:219)
+	at java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:141)
+	at java.base@17.0.16/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+	at java.base@17.0.16/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:162)
+
+"VM Runtime State Listener" prio=5 Id=13 RUNNABLE
+
+"Concurrent Mark Helper" prio=1 Id=14 RUNNABLE
+
+"GC Worker" prio=5 Id=15 RUNNABLE
+
+"Finalizer thread" prio=5 Id=18 RUNNABLE
+
+"Attach API update file access time" prio=5 Id=19 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Thread.sleepImpl(Native Method)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:1005)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:988)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.AttachHandler$1.run(AttachHandler.java:348)
+
+"Attach API wait loop" prio=10 Id=20 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Thread.sleepImpl(Native Method)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:1005)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:988)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.WaitLoop.checkReplyAndCreateAttachment(WaitLoop.java:142)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.WaitLoop.waitForNotification(WaitLoop.java:117)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.WaitLoop.run(WaitLoop.java:157)
+
+"Thread-0" prio=5 Id=21 RUNNABLE
+	at java.base@17.0.16/java.lang.VMAccess.findClassOrNull(Native Method)
+	at java.base@17.0.16/java.lang.ClassLoader.loadClass(ClassLoader.java:1088)
+	at java.base@17.0.16/java.time.format.DateTimeFormatter.formatTo(DateTimeFormatter.java:1847)
+	at java.base@17.0.16/java.time.format.DateTimeFormatter.format(DateTimeFormatter.java:1823)
+	at java.base@17.0.16/java.time.Instant.toString(Instant.java:1326)
+	at app//org.eclipse.jetty.util.Jetty.formatTimestamp(Jetty.java:90)
+	at app//org.eclipse.jetty.util.Jetty.<clinit>(Jetty.java:63)
+	at app//org.eclipse.jetty.server.HttpConfiguration.<clinit>(HttpConfiguration.java:55)
+	at app//spark.embeddedserver.jetty.SocketConnectorFactory.createHttpConnectionFactory(SocketConnectorFactory.java:111)
+	at app//spark.embeddedserver.jetty.SocketConnectorFactory.createSocketConnector(SocketConnectorFactory.java:48)
+	at app//spark.embeddedserver.jetty.EmbeddedJettyServer.ignite(EmbeddedJettyServer.java:108)
+	at app//spark.Service.lambda$init$2(Service.java:632)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"DestroyJavaVM helper thread" prio=5 Id=22 RUNNABLE
+
+"Attachment portNumber: 35955" prio=10 Id=23 RUNNABLE
+	at java.base@17.0.16/openj9.internal.tools.attach.target.DiagnosticUtils.dumpAllThreadsImpl(Native Method)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.DiagnosticUtils.getThreadInfo(DiagnosticUtils.java:339)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.DiagnosticUtils.executeDiagnosticCommand(DiagnosticUtils.java:275)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.Attachment.doCommand(Attachment.java:252)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.Attachment.run(Attachment.java:162)
+
+"file lock watchdog" prio=10 Id=24 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Object.waitImpl(Native Method)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:251)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:219)
+	at java.base@17.0.16/java.util.TimerThread.mainLoop(Timer.java:605)
+	at java.base@17.0.16/java.util.TimerThread.run(Timer.java:546)
+
+

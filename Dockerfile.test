@@ -1,0 +1,11 @@
+# Use a Rust base image
+FROM rust:latest
+
+# Set the working directory in the container
+WORKDIR /app/rust-sidecar
+
+# Copy the Rust project files into the container
+COPY rust-sidecar/ .
+
+# Run the tests
+RUN cargo test

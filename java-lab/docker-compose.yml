@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  java-app-openjdk8:
+    build:
+      dockerfile: Dockerfile.openjdk8
+    ports:
+      - "8080:8080"
+    container_name: java-app-openjdk8
+    environment:
+      - CONTAINER_NAME=java-app-openjdk8
+    volumes:
+      - jstack_host_data:/shared-jstack-dumps
+
+  java-app-openjdk11:
+    build:
+      dockerfile: Dockerfile.openjdk11
+    ports:
+      - "8082:8080" # Use a different port to avoid conflict
+    container_name: java-app-openjdk11
+    environment:
+      - CONTAINER_NAME=java-app-openjdk11
+    volumes:
+      - jstack_host_data:/shared-jstack-dumps
+
+  java-app-openjdk17:
+    build:
+      dockerfile: Dockerfile.openjdk17
+    ports:
+      - "8083:8080" # Use a different port
+    container_name: java-app-openjdk17
+    environment:
+      - CONTAINER_NAME=java-app-openjdk17
+    volumes:
+      - jstack_host_data:/shared-jstack-dumps
+
+  java-app-openjdk21:
+    build:
+      dockerfile: Dockerfile.openjdk21
+    ports:
+      - "8084:8080" # Use a different port
+    container_name: java-app-openjdk21
+    environment:
+      - CONTAINER_NAME=java-app-openjdk21
+    volumes:
+      - jstack_host_data:/shared-jstack-dumps
+
+  java-app-ibm17:
+    build:
+      dockerfile: Dockerfile.ibm17
+    ports:
+      - "8085:8080" # Use a different port
+    container_name: java-app-ibm17
+    environment:
+      - CONTAINER_NAME=java-app-ibm17
+    volumes:
+      - jstack_host_data:/shared-jstack-dumps
+
+volumes:
+  
+  jstack_host_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/ranjan/project/thread-analyzer/jstack_dumps

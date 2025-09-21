@@ -1,0 +1,29 @@
+2025-09-21T03:43:15.285796153
+Virtual machine: 7 JVM information:
+JRE 17 Linux aarch64-64-Bit Compressed References 20250715_1043 (JIT enabled, AOT enabled)
+OpenJ9   - 017819f167
+OMR      - 266a8c6f5
+JCL      - 34b4be01e57 based on jdk-17.0.16+8
+
+"BlockerThread" prio=5 Id=40 WAITING
+        at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+        at java.base@17.0.16/java.util.concurrent.locks.LockSupport.park(LockSupport.java:211)
+        at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:715)
+        at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSyn
+chronizer.java:1047)
+        at java.base@17.0.16/java.util.concurrent.CountDownLatch.await(CountDownLatch.java:230)
+        at app//com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$main$1(ThreadAnalyzerApplication.java:83)
+        - locked java.lang.Object@3b4b3daf
+        at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"BlockedThread" prio=5 Id=41 BLOCKED on java.lang.Object@3b4b3daf owned by "BlockerThread" Id=40
+        at app//com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$main$2(ThreadAnalyzerApplication.java:95)
+        at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"BlockerThread" prio=5 Id=42 BLOCKED on java.lang.Object@3b4b3daf owned by "BlockerThread" Id=40
+        at app//com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$main$1(ThreadAnalyzerApplication.java:79)
+        at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"BlockedThread" prio=5 Id=43 BLOCKED on java.lang.Object@3b4b3daf owned by "BlockerThread" Id=40
+        at app//com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$main$2(ThreadAnalyzerApplication.java:95)
+        at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)

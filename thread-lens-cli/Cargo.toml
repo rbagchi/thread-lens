@@ -1,0 +1,12 @@
+[package]
+name = "thread-lens-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+thread-lens = { path = "../thread-lens" }
+clap = { version = "4.0", features = ["derive"] }
+env_logger = "0.10.0"
+log = "0.4.17"
+serde_yaml = "0.9"
+serde_json = "1.0"

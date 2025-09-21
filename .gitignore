@@ -1,0 +1,58 @@
+# Git
+.git/
+
+# Rust
+target/
+**/target/
+**/*.rs.bk
+**/*.rs.bak
+**/*.rs~
+**/*.rs#
+**/*.d
+**/*.gcno
+**/*.gcda
+**/*.profdata
+**/*.profraw
+**/*.prof
+**/*.o
+**/*.rlib
+**/*.so
+**/*.dylib
+**/*.dll
+**/*.exe
+**/*.pdb
+**/*.lib
+**/*.a
+**/*.wasm
+**/pkg/ # Wasm build output
+
+# Node.js
+node_modules/
+
+# Python
+python/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+uv.lock
+
+# macOS
+.DS_Store
+
+# Generated files
+jstack_dumps/
+analysis_report_*.txt
+
+# My internal files
+GEMINI.md
+PLAN.md
+PLAN-1.md
+STATE.md
+STATE-2025-09-14.md
+test_wasm.js
+wasm_test_data/
+
+# Old/unused directories
+thread_analyzer/

@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+import org.gradle.api.file.DuplicatesStrategy
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Java Lab Application with Spark Java'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.sparkjava:spark-core:2.9.3'
+    // For logging, optional but good practice
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+}
+
+tasks.jar {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    manifest {
+        attributes 'Main-Class': 'com.example.threadanalyzer.ThreadAnalyzerApplication'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

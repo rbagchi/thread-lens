@@ -1,0 +1,178 @@
+2025-09-21T03:43:34.585998650
+Virtual machine: 7 JVM information:
+JRE 17 Linux aarch64-64-Bit Compressed References 20250715_1043 (JIT enabled, AOT enabled)
+OpenJ9   - 017819f167
+OMR      - 266a8c6f5
+JCL      - 34b4be01e57 based on jdk-17.0.16+8
+
+"JIT Compilation Thread-000" prio=10 Id=3 RUNNABLE
+
+"JIT Compilation Thread-001 Suspended" prio=10 Id=4 RUNNABLE
+
+"JIT Compilation Thread-002 Suspended" prio=10 Id=5 RUNNABLE
+
+"JIT Compilation Thread-003 Suspended" prio=10 Id=6 RUNNABLE
+
+"JIT Compilation Thread-004 Suspended" prio=10 Id=7 RUNNABLE
+
+"JIT Compilation Thread-005 Suspended" prio=10 Id=8 RUNNABLE
+
+"JIT Compilation Thread-006 Suspended" prio=10 Id=9 RUNNABLE
+
+"JIT Diagnostic Compilation Thread-007 Suspended" prio=10 Id=10 RUNNABLE
+
+"JIT-SamplerThread" prio=10 Id=11 TIMED_WAITING
+
+"IProfiler" prio=5 Id=12 RUNNABLE
+
+"Common-Cleaner" prio=8 Id=2 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Object.waitImpl(Native Method)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:251)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:219)
+	at java.base@17.0.16/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:141)
+	at java.base@17.0.16/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+	at java.base@17.0.16/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:162)
+
+"VM Runtime State Listener" prio=5 Id=13 RUNNABLE
+
+"Concurrent Mark Helper" prio=1 Id=14 RUNNABLE
+
+"GC Worker" prio=5 Id=15 RUNNABLE
+
+"Finalizer thread" prio=5 Id=18 RUNNABLE
+
+"file lock watchdog" prio=5 Id=19 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Object.waitImpl(Native Method)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:251)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:219)
+	at java.base@17.0.16/java.util.TimerThread.mainLoop(Timer.java:605)
+	at java.base@17.0.16/java.util.TimerThread.run(Timer.java:546)
+
+"Attach API update file access time" prio=5 Id=20 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Thread.sleepImpl(Native Method)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:1005)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:988)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.AttachHandler$1.run(AttachHandler.java:348)
+
+"Attach API wait loop" prio=10 Id=21 TIMED_WAITING
+	at java.base@17.0.16/java.lang.Thread.sleepImpl(Native Method)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:1005)
+	at java.base@17.0.16/java.lang.Thread.sleep(Thread.java:988)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.WaitLoop.checkReplyAndCreateAttachment(WaitLoop.java:142)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.WaitLoop.waitForNotification(WaitLoop.java:117)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.WaitLoop.run(WaitLoop.java:157)
+
+"Thread-0" prio=5 Id=22 WAITING
+	at java.base@17.0.16/java.lang.Object.waitImpl(Native Method)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:251)
+	at java.base@17.0.16/java.lang.Object.wait(Object.java:190)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool.join(QueuedThreadPool.java:567)
+	at app//org.eclipse.jetty.server.Server.join(Server.java:551)
+	at app//spark.embeddedserver.jetty.EmbeddedJettyServer.join(EmbeddedJettyServer.java:158)
+	at app//spark.Service.lambda$init$2(Service.java:644)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"DestroyJavaVM helper thread" prio=5 Id=23 RUNNABLE
+
+"qtp696334409-25" prio=5 Id=25 RUNNABLE
+	at java.base@17.0.16/sun.nio.ch.EPoll.wait(Native Method)
+	at java.base@17.0.16/sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:118)
+	at java.base@17.0.16/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:129)
+	- locked sun.nio.ch.EPollSelectorImpl@b9de0d03
+	at java.base@17.0.16/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:146)
+	at app//org.eclipse.jetty.io.ManagedSelector.nioSelect(ManagedSelector.java:149)
+	at app//org.eclipse.jetty.io.ManagedSelector.select(ManagedSelector.java:156)
+	at app//org.eclipse.jetty.io.ManagedSelector$SelectorProducer.select(ManagedSelector.java:572)
+	at app//org.eclipse.jetty.io.ManagedSelector$SelectorProducer.produce(ManagedSelector.java:509)
+	at app//org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produceTask(EatWhatYouKill.java:360)
+	at app//org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:184)
+	at app//org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:171)
+	at app//org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:135)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-26-acceptor-0@e523d912-ServerConnector@5aefc195{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}" prio=3 Id=26 RUNNABLE
+	at java.base@17.0.16/sun.nio.ch.Net.accept(Native Method)
+	at java.base@17.0.16/sun.nio.ch.ServerSocketChannelImpl.implAccept(ServerSocketChannelImpl.java:432)
+	at java.base@17.0.16/sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:398)
+	at app//org.eclipse.jetty.server.ServerConnector.accept(ServerConnector.java:388)
+	at app//org.eclipse.jetty.server.AbstractConnector$Acceptor.run(AbstractConnector.java:702)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:806)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:938)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-27" prio=5 Id=27 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at app//org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:875)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:925)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-28" prio=5 Id=28 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at app//org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:875)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:925)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-29" prio=5 Id=29 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at app//org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:875)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:925)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-30" prio=5 Id=30 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at app//org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:875)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:925)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-31" prio=5 Id=31 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at app//org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:875)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:925)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"qtp696334409-32" prio=5 Id=32 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at app//org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:382)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.idleJobPoll(QueuedThreadPool.java:875)
+	at app//org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:925)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"Session-HouseKeeper-34495eaf-1" prio=5 Id=33 TIMED_WAITING
+	at java.base@17.0.16/jdk.internal.misc.Unsafe.park(Native Method)
+	at java.base@17.0.16/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+	at java.base@17.0.16/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1679)
+	at java.base@17.0.16/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+	at java.base@17.0.16/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+	at java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+	at java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+	at java.base@17.0.16/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base@17.0.16/java.lang.Thread.run(Thread.java:853)
+
+"Attachment portNumber: 45851" prio=10 Id=34 RUNNABLE
+	at java.base@17.0.16/openj9.internal.tools.attach.target.DiagnosticUtils.dumpAllThreadsImpl(Native Method)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.DiagnosticUtils.getThreadInfo(DiagnosticUtils.java:339)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.DiagnosticUtils.executeDiagnosticCommand(DiagnosticUtils.java:275)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.Attachment.doCommand(Attachment.java:252)
+	at java.base@17.0.16/openj9.internal.tools.attach.target.Attachment.run(Attachment.java:162)
+
+
