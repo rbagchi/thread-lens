@@ -1,6 +1,5 @@
 use wasm_bindgen::prelude::*;
 use console_error_panic_hook;
-use web_sys;
 
 pub mod analyzer;
 pub mod models;
