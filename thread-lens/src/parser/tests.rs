@@ -2,7 +2,9 @@
 
 use super::ibm::parse_jstack_output_ibm;
 use super::openjdk::parse_jstack_output_openjdk;
-use crate::models::{ThreadCategory, FrameCategory};
+
+use super::{detect_jvm_vendor, parse_jstack_output};
+use crate::models::{FrameCategory, ThreadCategory};
 
 #[test]
 fn test_parse_jstack_output_ibm_sample() {
@@ -44,8 +46,14 @@ Full thread dump IBM Semeru Runtime Open Edition 17.0.8.0 (build 17.0.8+7, JRE 1
     assert_eq!(blocked_thread.category, ThreadCategory::Application);
     assert_eq!(blocked_thread.frames.len(), 2);
     assert_eq!(blocked_thread.frames[0].line, "at com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$null$2(ThreadAnalyzerApplication.java:96)");
-    assert_eq!(blocked_thread.frames[0].category, FrameCategory::Application);
-    assert_eq!(blocked_thread.frames[1].line, "at java.lang.Object.wait(java.base@17.0.8/Native Method)");
+    assert_eq!(
+        blocked_thread.frames[0].category,
+        FrameCategory::Application
+    );
+    assert_eq!(
+        blocked_thread.frames[1].line,
+        "at java.lang.Object.wait(java.base@17.0.8/Native Method)"
+    );
     assert_eq!(blocked_thread.frames[1].category, FrameCategory::Jvm);
 
     // Test BlockerThread
@@ -55,8 +63,14 @@ Full thread dump IBM Semeru Runtime Open Edition 17.0.8.0 (build 17.0.8+7, JRE 1
     assert_eq!(blocker_thread.category, ThreadCategory::Application);
     assert_eq!(blocker_thread.frames.len(), 2);
     assert_eq!(blocker_thread.frames[0].line, "at com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$main$1(ThreadAnalyzerApplication.java:80)");
-    assert_eq!(blocker_thread.frames[0].category, FrameCategory::Application);
-    assert_eq!(blocker_thread.frames[1].line, "at java.lang.Object.wait(java.base@17.0.8/Native Method)");
+    assert_eq!(
+        blocker_thread.frames[0].category,
+        FrameCategory::Application
+    );
+    assert_eq!(
+        blocker_thread.frames[1].line,
+        "at java.lang.Object.wait(java.base@17.0.8/Native Method)"
+    );
     assert_eq!(blocker_thread.frames[1].category, FrameCategory::Jvm);
 }
 
@@ -67,7 +81,6 @@ Full thread dump OpenJDK 64-Bit Server VM (11.0.16+8 mixed mode, sharing):
 
 "main" #1 prio=5 os_prio=0 cpu=0.00ms elapsed=0.00s tid=0x0000e91980193800 nid=0x2d runnable  [0x0000e919527fe000]
    java.lang.Thread.State: RUNNABLE
-	at com.example.threadanalyzer.ThreadAnalyzerApplication.main(ThreadAnalyzerApplication.java:100)
 
 "Thread-0" #10 prio=5 os_prio=0 cpu=106.01ms elapsed=0.25s tid=0x0000e91980193800 nid=0x2d in Object.wait()  [0x0000e919527fe000]
    java.lang.Thread.State: WAITING (on object monitor)
@@ -89,10 +102,8 @@ Full thread dump OpenJDK 64-Bit Server VM (11.0.16+8 mixed mode, sharing):
     let main_thread = &dump.threads[0];
     assert_eq!(main_thread.name, "main");
     assert_eq!(main_thread.state, "RUNNABLE");
-    assert_eq!(main_thread.category, ThreadCategory::Application);
-    assert_eq!(main_thread.frames.len(), 1);
-    assert_eq!(main_thread.frames[0].line, "at com.example.threadanalyzer.ThreadAnalyzerApplication.main(ThreadAnalyzerApplication.java:100)");
-    assert_eq!(main_thread.frames[0].category, FrameCategory::Application);
+    assert_eq!(main_thread.category, ThreadCategory::Jvm);
+    assert_eq!(main_thread.frames.len(), 0);
 
     // Test Thread-0 (WAITING on object monitor -> BLOCKED)
     let thread_0 = &dump.threads[1];
@@ -100,7 +111,10 @@ Full thread dump OpenJDK 64-Bit Server VM (11.0.16+8 mixed mode, sharing):
     assert_eq!(thread_0.state, "BLOCKED");
     assert_eq!(thread_0.category, ThreadCategory::Application);
     assert_eq!(thread_0.frames.len(), 2);
-    assert_eq!(thread_0.frames[0].line, "at java.lang.Object.wait(java.base@11.0.16/Native Method)");
+    assert_eq!(
+        thread_0.frames[0].line,
+        "at java.lang.Object.wait(java.base@11.0.16/Native Method)"
+    );
     assert_eq!(thread_0.frames[0].category, FrameCategory::Jvm);
     assert_eq!(thread_0.frames[1].line, "at com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$null$2(ThreadAnalyzerApplication.java:96)");
     assert_eq!(thread_0.frames[1].category, FrameCategory::Application);
@@ -112,5 +126,8 @@ Full thread dump OpenJDK 64-Bit Server VM (11.0.16+8 mixed mode, sharing):
     assert_eq!(blocked_thread.category, ThreadCategory::Application);
     assert_eq!(blocked_thread.frames.len(), 1);
     assert_eq!(blocked_thread.frames[0].line, "at com.example.threadanalyzer.ThreadAnalyzerApplication.lambda$null$2(ThreadAnalyzerApplication.java:96)");
-    assert_eq!(blocked_thread.frames[0].category, FrameCategory::Application);
+    assert_eq!(
+        blocked_thread.frames[0].category,
+        FrameCategory::Application
+    );
 }
