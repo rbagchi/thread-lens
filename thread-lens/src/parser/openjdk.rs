@@ -1,14 +1,31 @@
 use crate::models::{ThreadDump, NormalizedThread, CategorizedFrame, ThreadCategory};
 use crate::analyzer::{categorize_frame, determine_thread_category};
 use chrono::Utc;
+use log;
+use lazy_static::lazy_static;
+use regex::Regex;
+
+lazy_static! {
+    static ref OPENJDK_JVM_VERSION_REGEX: Regex = Regex::new(r"Full thread dump (.*) \((\d+\.\d+\.\d+\+\d+).*\):$").unwrap();
+}
 
 pub fn parse_jstack_output_openjdk(output: &str) -> Result<ThreadDump, String> {
     let mut threads = Vec::new();
     let mut current_thread: Option<NormalizedThread> = None;
     let mut current_state_line: Option<String> = None;
+    let mut jvm_version = "OpenJDK (Unknown Version)".to_string(); // Default placeholder
 
     for line in output.lines() {
-        if line.starts_with('\"') && line.contains("nid=") {
+        log::info!("Processing line: {}", line);
+        // Attempt to extract JVM version from header lines
+        if let Some(captures) = OPENJDK_JVM_VERSION_REGEX.captures(line) {
+            if let (Some(jvm_name_match), Some(version_num_match)) = (captures.get(1), captures.get(2)) {
+                jvm_version = format!("{} ({})", jvm_name_match.as_str().trim(), version_num_match.as_str().trim());
+                log::info!("Detected JVM version: {}", jvm_version);
+            }
+        }
+
+        if line.starts_with('"') && line.contains("nid=") {
             // Finalize the previous thread
             if let Some(mut thread) = current_thread.take() {
                 if let Some(state_line) = current_state_line.take() {
@@ -18,11 +35,11 @@ pub fn parse_jstack_output_openjdk(output: &str) -> Result<ThreadDump, String> {
                 threads.push(thread);
             }
 
-            let name = line.split('\"').nth(1).unwrap_or("").to_string();
+            let name = line.split('"').nth(1).unwrap_or("").to_string();
             current_thread = Some(NormalizedThread {
                 name,
                 state: "UNKNOWN".to_string(), // Will be parsed from the state line
-                category: ThreadCategory::Unknown,
+                category: ThreadCategory::Unknown, // Will be determined after parsing frames
                 frames: Vec::new(),
             });
 
@@ -51,7 +68,7 @@ pub fn parse_jstack_output_openjdk(output: &str) -> Result<ThreadDump, String> {
     }
 
     Ok(ThreadDump {
-        jvm_version: "OpenJDK (Unknown Version)".to_string(), // Placeholder
+        jvm_version, // Use the extracted JVM version
         timestamp: Utc::now(), // Placeholder
         threads,
     })

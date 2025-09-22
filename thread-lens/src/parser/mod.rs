@@ -3,6 +3,7 @@ use crate::models::ThreadDump;
 pub mod jvm_vendor;
 pub mod openjdk;
 pub mod ibm;
+pub mod tests;
 
 pub use jvm_vendor::JvmVendor;
 use openjdk::parse_jstack_output_openjdk;
