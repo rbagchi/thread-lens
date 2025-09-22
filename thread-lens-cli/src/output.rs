@@ -1,5 +1,4 @@
 use thread_lens::models::ThreadDump;
-use serde_json::json;
 
 pub fn print_text_view(dump: &ThreadDump) {
     println!("--- Thread Dump Analysis ---");
